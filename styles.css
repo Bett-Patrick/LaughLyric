@@ -49,10 +49,11 @@ body{
     border-radius: 10px;
 }
 .jokes-container{
+    width: 400px;
+    height: 500px;
     background-color: burlywood;
     padding: 30px;
     border-radius: 20px;
-
 }
 .joke-of-the-day{
     display: flex;
