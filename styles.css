@@ -10,6 +10,7 @@ body{
     border: #000 2px solid;
     align-items: center;
     width: 100%;
+    height: 100%;
     background-image: url(./images/laugh_emoji.jpeg);
 }
 .nav-bar{
@@ -32,29 +33,51 @@ body{
 .container{
     display: flex;
     flex-direction: row;
-    border: #000 2px solid;
+    border: #180505 2px solid;
     margin-top: 50px;
-    background-color: #000;
+    background-color: #180505;
     border-radius: 0 20px 20px 0;
+    width: 80%;
+    height: 100vh;
 }
+/* Edit jokes buttons styling */
 .edit-joke{
-    display: grid;
-    margin: 10px 20px 10px 20px;
-    width: 100px;
-    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px 0px 10px 0px;
+    width: 20vw;
+    height: 100vh;
 }
 .edit-joke button{
     margin-bottom: 20px;
-    height: 30px;
+    height: 50px;
+    width: 20vw;
     border-radius: 10px;
+    background-color: rgb(208, 141, 59);
+    color: #fff;
+    font-weight: 700;
+    margin: 30px 0 50px 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
 }
+/* All jokes container styling */
 .jokes-container{
-    width: 400px;
-    height: 500px;
+    width: 80vw;
+    height: 100vh;
     background-color: burlywood;
     padding: 30px;
     border-radius: 20px;
 }
+/* specific joke styling */
+#joke-div{
+    background-color: #fff;
+    border-radius: 10px;
+    border: #230909 2px solid;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+/* joke of the day styles*/
 .joke-of-the-day{
     display: flex;
     flex-direction: column;
