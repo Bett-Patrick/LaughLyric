@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded",() => {
         .then(res => res.json())
         .then((jokesObject) => {
             let jokes = jokesObject.jokes
-            // console.log(jokes)
+            console.log(jokes)
             jokes.forEach((joke) => {
                 // console.log(joke)
                 renderJokes(joke)        
@@ -48,21 +48,64 @@ document.addEventListener("DOMContentLoaded",() => {
     //display the jokes based on category
     function renderJokes(joke){
         // console.log(joke.setup)
+        let interactionSection = document.createElement("div")
+        interactionSection.className = "interactions"
+        interactionSection.innerHTML = `
+            <div class="laugh-emoji">
+                <img id = "laugh" src="./images/laugh.png" alt="laugh.jpg">
+                <span class = "laugh-count"></span>
+            </div>
+            <div class="sad-emoji">
+                <img id = "sad" src="./images/sad_emoji.png" alt="laugh.jpg">
+                <span class = "sad-count"></span>
+            </div>
+            <div class="share-icon">
+                <img id = "share" src="./images/share_icon.png" alt="laugh.jpg">
+                <span class = "share-count"></span>
+            </div>
+        `
+        interactionSection.addEventListener("click", (e) => {
+            console.log(e)
+            addInteractions(e)
+        })
         let jokeDiv = document.createElement("div")
+        jokeDiv.id = "joke-div"
+
         if (joke.type === 'single') {
-            console.log(joke)
-            console.log(joke.joke)
+            // console.log(joke)
+            // console.log(joke.joke)
             jokeDiv.textContent = joke.joke
+            jokeDiv.appendChild(interactionSection)
         }else if (joke.type === 'twopart') {
-            console.log(joke)
+            // console.log(joke)
             let setup = joke.setup
             let delivery = joke.delivery
-            console.log(`${setup}\n${delivery}`)
+            // console.log(`${setup}\n${delivery}`)
             jokeDiv.textContent = `${setup}\n${delivery}`
+            jokeDiv.appendChild(interactionSection)
         }
-        jokeDiv.id = "joke-div"
-        jokeDiv.textContent = joke.setup
         document.querySelector(".jokes-container").appendChild(jokeDiv)
     }
-})
 
+    let laughCount = 0
+    let sadCount = 0
+    let shareCount = 0
+    function addInteractions(e) {
+        const clickedElement = e.target;
+    
+        if (clickedElement.id === "laugh") {
+            console.log(joke.id)
+            console.log("Laugh clicked");
+            laughCount++
+            document.querySelector(".laugh-count").textContent = laughCount
+        } else if (clickedElement.id === "sad") {
+            console.log("Sad clicked");
+            sadCount++
+            document.querySelector(".sad-count").textContent = sadCount
+        } else if (clickedElement.id === "share") {
+            console.log("Share clicked");
+            shareCount++
+            document.querySelector(".share-count").textContent = shareCount
+        }
+    }
+})

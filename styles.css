@@ -39,6 +39,7 @@ body{
     border-radius: 0 20px 20px 0;
     width: 80%;
     height: 100vh;
+    padding-bottom: 5px;
 }
 /* Edit jokes buttons styling */
 .edit-joke{
@@ -68,6 +69,8 @@ body{
     background-color: burlywood;
     padding: 30px;
     border-radius: 20px;
+    overflow-x: hidden;
+    overflow-y: scroll;
 }
 /* specific joke styling */
 #joke-div{
@@ -76,6 +79,11 @@ body{
     border: #230909 2px solid;
     padding: 5px;
     margin-bottom: 20px;
+}
+.remove-scroll-overflow{
+    width: 25px;
+    background-color: #fff;
+    border-radius: 0 80px 80px 0;
 }
 /* joke of the day styles*/
 .joke-of-the-day{
@@ -99,4 +107,56 @@ body{
 .joke-of-the-day p{
     font-size: 20px;
     font-style: oblique;
+}
+/* User interactions */
+.interactions{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 70%;
+    height: 50px;
+    overflow: hidden;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5px;
+    background-color: rgb(226, 229, 232);
+}
+.laugh-emoji{
+    display: flex;
+    width: 30%;
+    margin-right: 10px;
+}
+.laugh-emoji img{
+    width: 40px;
+    height: 40px;
+}
+.laugh-emoji span{
+    padding: 3px;
+    background-color: antiquewhite;
+}
+.sad-emoji{
+    display: flex;
+    width: 30%;
+    margin-right: 10px;
+}
+.sad-emoji img{
+    width: 40px;
+    height: 40px;
+}
+.sad-emoji span{
+    padding: 3px;
+    background-color: antiquewhite;
+}
+.share-icon{
+    width: 30%;
+    margin-right: 10px;
+}
+.share-icon img{
+    width: 40px;
+    height: 40px;
+}
+.share-icon span{
+    padding: 3px;
+    background-color: antiquewhite;
 }
