@@ -1,0 +1,26 @@
+{
+    "jokes": [
+      {
+        "type": "single",
+        "joke": "Why did the scarecrow win an award? Because he was outstanding in his field!"
+      },
+      {
+        "type": "twopart",
+        "setup": "Why don't scientists trust atoms?",
+        "delivery": "Because they make up everything!"
+      },
+      {
+        "type": "single",
+        "joke": "Parallel lines have so much in common. It's a shame they'll never meet."
+      },
+      {
+        "type": "twopart",
+        "setup": "Why did the bicycle fall over?",
+        "delivery": "Because it was two-tired!"
+      },
+      {
+        "type": "single",
+        "joke": "I told my wife she should embrace her mistakes. She gave me a hug."
+      }
+    ]
+  }
