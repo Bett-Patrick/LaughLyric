@@ -114,49 +114,58 @@ body{
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    width: 70%;
+    width: 90%;
     height: 50px;
     overflow: hidden;
     margin-right: auto;
     margin-left: auto;
     margin-top: 5px;
     background-color: rgb(226, 229, 232);
+    border-radius: 10px;
 }
 .laugh-emoji{
     display: flex;
     width: 30%;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 .laugh-emoji img{
     width: 40px;
     height: 40px;
 }
 .laugh-emoji span{
-    padding: 3px;
-    background-color: antiquewhite;
+    padding: 2px;
+    background-color: #fff;
 }
 .sad-emoji{
     display: flex;
     width: 30%;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 .sad-emoji img{
     width: 40px;
     height: 40px;
 }
 .sad-emoji span{
-    padding: 3px;
-    background-color: antiquewhite;
+    padding: 2px;
+    background-color: #fff;
 }
 .share-icon{
     width: 30%;
-    margin-right: 10px;
+    margin-right: 5px;
 }
 .share-icon img{
     width: 40px;
     height: 40px;
 }
 .share-icon span{
-    padding: 3px;
-    background-color: antiquewhite;
+    padding: 2px;
+    background-color: #fff;
+    height: 20px;
+}
+/* forms styles */
+#form-add-joke{
+    width: 400px;
+    height: 400px;
+    background-color: bisque;
+    z-index: 3;
 }

@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded",() => {
         .then(res => res.json())
         .then((jokesObject) => {
             let jokes = jokesObject.jokes
-            console.log(jokes)
+            // console.log(jokes)
             jokes.forEach((joke) => {
                 // console.log(joke)
                 renderJokes(joke)        
@@ -87,25 +87,63 @@ document.addEventListener("DOMContentLoaded",() => {
         document.querySelector(".jokes-container").appendChild(jokeDiv)
     }
 
-    let laughCount = 0
-    let sadCount = 0
-    let shareCount = 0
     function addInteractions(e) {
         const clickedElement = e.target;
+        
+        // Find the closest interactions section for the clicked element 
+        // by using "closest method"
+        const interactionSection = clickedElement.closest('.interactions');
+        let laughCount = 0
+    let sadCount = 0
+    let shareCount = 0
     
-        if (clickedElement.id === "laugh") {
-            console.log(joke.id)
-            console.log("Laugh clicked");
-            laughCount++
-            document.querySelector(".laugh-count").textContent = laughCount
-        } else if (clickedElement.id === "sad") {
-            console.log("Sad clicked");
-            sadCount++
-            document.querySelector(".sad-count").textContent = sadCount
-        } else if (clickedElement.id === "share") {
-            console.log("Share clicked");
-            shareCount++
-            document.querySelector(".share-count").textContent = shareCount
+        if (interactionSection) {
+            const laughCountElement = interactionSection.querySelector('.laugh-count');
+            const sadCountElement = interactionSection.querySelector('.sad-count');
+            const shareCountElement = interactionSection.querySelector('.share-count');
+    
+            if (clickedElement.id === 'laugh') {
+                console.log('Laugh clicked');
+                laughCount++;
+                laughCountElement.textContent = `${laughCount} laughs`;
+            } else if (clickedElement.id === 'sad') {
+                console.log('Sad clicked');
+                sadCount++;
+                sadCountElement.textContent = `${sadCount} sads`;
+            } else if (clickedElement.id === 'share') {
+                console.log('Share clicked');
+                shareCount++;
+                shareCountElement.textContent = `${shareCount} shares`;
+            }
         }
     }
+    
+    
+
+    //Add, delete, edit jokes
+    const formDiv = document.createElement("div")
+    formDiv.innerHTML = `
+        <form action="#" id="form-add-joke" method="POST">
+            <h3>Add Joke</h3>
+            <label for="type"></label></br>
+                <select name="type" id="type">
+                    <option value="single">single</option>
+                    <option value="twopart">twopart</option>
+                </select></br>
+            <label for="joke"></label></br>
+                <input type="text" name="joke" id="joke">
+            <label for="setup"></label></br>
+                <input type="text" name="setup" id="setup">
+            <label for="delivery"></label></br>
+                <input type="text" name="delivery" id="delivery">
+        </form>
+    `
+
+    const addJoke = document.querySelector("#add-joke")
+    addJoke.addEventListener("click",() => {
+        formDiv.style.display = "block"
+        document.querySelector(".jokes-container").innerHTML = formDiv
+    })
+
+
 })
