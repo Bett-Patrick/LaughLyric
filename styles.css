@@ -65,7 +65,7 @@ body{
 /* All jokes container styling */
 .jokes-container{
     width: 80vw;
-    height: 100vh;
+    height: 99vh;
     background-color: burlywood;
     padding: 30px;
     border-radius: 20px;
@@ -123,49 +123,74 @@ body{
     background-color: rgb(226, 229, 232);
     border-radius: 10px;
 }
+/* laugh */
 .laugh-emoji{
     display: flex;
+    align-items: center;
     width: 30%;
     margin-right: 5px;
 }
 .laugh-emoji img{
     width: 40px;
     height: 40px;
+    margin-right: 5px;
 }
 .laugh-emoji span{
     padding: 2px;
     background-color: #fff;
+    width: 100px;
+    height: 25px;
 }
+/* sad */
 .sad-emoji{
     display: flex;
+    align-items: center;
     width: 30%;
     margin-right: 5px;
 }
 .sad-emoji img{
     width: 40px;
     height: 40px;
+    margin-right: 5px;
 }
 .sad-emoji span{
     padding: 2px;
     background-color: #fff;
+    width: 100px;
+    height: 25px;
 }
+/* share */
 .share-icon{
+    display: flex;
+    align-items: center;
     width: 30%;
     margin-right: 5px;
 }
 .share-icon img{
     width: 40px;
     height: 40px;
+    margin-right: 5px;
 }
 .share-icon span{
     padding: 2px;
     background-color: #fff;
-    height: 20px;
+    width: 100px;
+    height: 25px;
 }
+
 /* forms styles */
+.form-div{
+    /* display: grid; */
+    width: 600px;
+    height: 700px;
+    background-color: #c8bfbfe1;
+    z-index: 3;
+    border: #180505 3px solid;
+}
 #form-add-joke{
     width: 400px;
     height: 400px;
-    background-color: bisque;
+    background-color: #fff;
     z-index: 3;
 }
+

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded",() => {
     let url =""
     let category = document.querySelector("#category")
-    category.addEventListener("click",(e)=>{
+    category.addEventListener("change",(e)=>{
         // console.log(e.target.value)
         if(e.target.value ==="programming") {
             document.querySelector(".jokes-container").innerHTML = ""
@@ -53,15 +53,15 @@ document.addEventListener("DOMContentLoaded",() => {
         interactionSection.innerHTML = `
             <div class="laugh-emoji">
                 <img id = "laugh" src="./images/laugh.png" alt="laugh.jpg">
-                <span class = "laugh-count"></span>
+                <span class = "laugh-count">0</span>
             </div>
             <div class="sad-emoji">
                 <img id = "sad" src="./images/sad_emoji.png" alt="laugh.jpg">
-                <span class = "sad-count"></span>
+                <span class = "sad-count">0</span>
             </div>
             <div class="share-icon">
                 <img id = "share" src="./images/share_icon.png" alt="laugh.jpg">
-                <span class = "share-count"></span>
+                <span class = "share-count">0</span>
             </div>
         `
         interactionSection.addEventListener("click", (e) => {
@@ -93,18 +93,19 @@ document.addEventListener("DOMContentLoaded",() => {
         // Find the closest interactions section for the clicked element 
         // by using "closest method"
         const interactionSection = clickedElement.closest('.interactions');
-        let laughCount = 0
-    let sadCount = 0
-    let shareCount = 0
     
         if (interactionSection) {
             const laughCountElement = interactionSection.querySelector('.laugh-count');
             const sadCountElement = interactionSection.querySelector('.sad-count');
             const shareCountElement = interactionSection.querySelector('.share-count');
     
+            let laughCount = parseInt(laughCountElement.textContent)
+            let sadCount = parseInt(sadCountElement.textContent)
+            let shareCount = parseInt(shareCountElement.textContent)
+            console.log(laughCount)
             if (clickedElement.id === 'laugh') {
                 console.log('Laugh clicked');
-                laughCount++;
+                laughCount++
                 laughCountElement.textContent = `${laughCount} laughs`;
             } else if (clickedElement.id === 'sad') {
                 console.log('Sad clicked');
@@ -119,31 +120,41 @@ document.addEventListener("DOMContentLoaded",() => {
     }
     
     
+    //Add, delete, edit jokes Section:
 
-    //Add, delete, edit jokes
+    /** Add joke form */
     const formDiv = document.createElement("div")
+    formDiv.className = "form-div"
     formDiv.innerHTML = `
         <form action="#" id="form-add-joke" method="POST">
             <h3>Add Joke</h3>
-            <label for="type"></label></br>
+            <label for="type">Select joke type</label><br>
                 <select name="type" id="type">
                     <option value="single">single</option>
                     <option value="twopart">twopart</option>
-                </select></br>
-            <label for="joke"></label></br>
-                <input type="text" name="joke" id="joke">
-            <label for="setup"></label></br>
-                <input type="text" name="setup" id="setup">
-            <label for="delivery"></label></br>
-                <input type="text" name="delivery" id="delivery">
+                </select><br>
+            <label for="joke"> <strong>Single</strong> </label><br>
+                <input type="text" name="joke" placeholder="Type joke" id="joke"><br>
+            <label for="setup"><strong>Two part</strong></label><br>
+                <input type="text" name="setup" placeholder="First part" id="setup"><br>
+                <input type="text" name="delivery" placeholder="Second part" id="delivery"><br>
+            <button type="submit" id = "submit-btn">Submit</button><br>
+            <button id = "exit-btn">Exit</button>
         </form>
     `
-
+    //append the form when add joke is clicked
     const addJoke = document.querySelector("#add-joke")
     addJoke.addEventListener("click",() => {
         formDiv.style.display = "block"
-        document.querySelector(".jokes-container").innerHTML = formDiv
+        document.querySelector(".jokes-container").innerHTML = ""
+        document.querySelector(".jokes-container").appendChild(formDiv)
     })
 
+    // disable single part or two part accordingly
+    const selectType = document.querySelector("#type")
+    console.log(selectType)
+    selectType.addEventListener("click",(e) => {
+        console.log(e.target)
+    })
 
 })
