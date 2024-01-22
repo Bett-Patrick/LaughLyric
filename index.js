@@ -72,7 +72,6 @@ document.addEventListener("DOMContentLoaded",() => {
         jokeDiv.id = "joke-div"
 
         if (joke.type === 'single') {
-            // console.log(joke)
             // console.log(joke.joke)
             jokeDiv.textContent = joke.joke
             jokeDiv.appendChild(interactionSection)
@@ -80,7 +79,6 @@ document.addEventListener("DOMContentLoaded",() => {
             // console.log(joke)
             let setup = joke.setup
             let delivery = joke.delivery
-            // console.log(`${setup}\n${delivery}`)
             jokeDiv.textContent = `${setup}\n${delivery}`
             jokeDiv.appendChild(interactionSection)
         }
@@ -91,7 +89,7 @@ document.addEventListener("DOMContentLoaded",() => {
         const clickedElement = e.target;
         
         // Find the closest interactions section for the clicked element 
-        // by using "closest method"
+        // i.e(laugh,sad,share) by using "closest method"
         const interactionSection = clickedElement.closest('.interactions');
     
         if (interactionSection) {
@@ -148,13 +146,26 @@ document.addEventListener("DOMContentLoaded",() => {
         formDiv.style.display = "block"
         document.querySelector(".jokes-container").innerHTML = ""
         document.querySelector(".jokes-container").appendChild(formDiv)
+    
+
+        // call the function that disables/enables inputs based on selected type
+        const selectType = document.querySelector("#type");
+        selectType.addEventListener("change", (e) => {
+            const selectedType = e.target.value;
+            disableInputs(selectedType)
+        });          
     })
 
-    // disable single part or two part accordingly
-    const selectType = document.querySelector("#type")
-    console.log(selectType)
-    selectType.addEventListener("click",(e) => {
-        console.log(e.target)
-    })
-
+     // Function thst disable/enable inputs based on the selected type
+     function disableInputs(selectedType){
+        const singleInput = document.querySelector("#joke");
+        const twoPartInputs = document.querySelectorAll("#setup, #delivery");
+        if (selectedType === "single") {
+            singleInput.disabled = false;
+            twoPartInputs.forEach(input => input.disabled = true);
+        } else if (selectedType === "twopart") {
+            singleInput.disabled = true;
+            twoPartInputs.forEach(input => input.disabled = false);
+        }
+    }
 })

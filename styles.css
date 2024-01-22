@@ -144,6 +144,7 @@ body{
 /* sad */
 .sad-emoji{
     display: flex;
+    justify-content: center;
     align-items: center;
     width: 30%;
     margin-right: 5px;
