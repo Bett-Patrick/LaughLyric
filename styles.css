@@ -181,17 +181,71 @@ body{
 
 /* forms styles */
 .form-div{
-    /* display: grid; */
-    width: 600px;
-    height: 700px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
     background-color: #c8bfbfe1;
     z-index: 3;
     border: #180505 3px solid;
+    border-radius: 20px;
+    overflow: hidden;
 }
 #form-add-joke{
-    width: 400px;
-    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80%;
+    height: 80%;
     background-color: #fff;
     z-index: 3;
+    margin: auto auto;
+    margin-top: 40px;
+    border-radius: 15px;
+    padding: 10px;
+    box-shadow: 0px 10px 5px 5px #000;
+    font-family: Arial, Helvetica, sans-serif;
 }
-
+#form-add-joke h3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    font-size: 20px;
+    background-color: rgb(223, 223, 212);
+    width: 100%;
+    color: #00ae2698;
+    border-radius: 5px;
+    height: 40px;
+    margin-bottom: 5px;
+}
+#form-add-joke label{
+    font-style: italic;
+    font-weight: 800;
+    color: #00ae2698;
+}
+#type{
+    font-weight: 600;
+    border: #000 2px solid;
+    border-radius: 5px;
+}
+#type option{
+    font-weight: 800;
+}
+.input{
+    height: 50px;
+    border-radius: 5px;
+    padding: 10px;
+}
+#form-add-joke button {
+    width: 200px;
+    background-color: rgb(0, 128, 0);
+    color: #fff;
+    font-weight: 800;
+    height: 50px;
+    font-size: 18px;
+    border-radius: 5px;
+    margin: auto auto;
+}

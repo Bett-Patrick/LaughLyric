@@ -129,10 +129,10 @@ document.addEventListener("DOMContentLoaded",() => {
                     <option value="twopart">twopart</option>
                 </select><br>
             <label for="joke"> <strong>Single</strong> </label><br>
-                <input type="text" name="joke" placeholder="Type joke" id="joke"><br>
+                <input type="text" name="joke" placeholder="Type joke" class = "input" id="joke"><br>
             <label for="setup"><strong>Two part</strong></label><br>
-                <input type="text" name="setup" placeholder="First part" id="setup"><br>
-                <input type="text" name="delivery" placeholder="Second part" id="delivery"><br>
+                <input type="text" name="setup" placeholder="First part" class = "input" id="setup"><br>
+                <input type="text" name="delivery" placeholder="Second part" class = "input" id="delivery"><br>
             <button type="submit" id = "submit-btn">Submit</button><br>
             <button id = "exit-btn">Exit</button>
         </form>
