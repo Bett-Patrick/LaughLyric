@@ -1,26 +1,10 @@
 {
   "jokes": [
     {
-      "id": 0,
-      "type": "single",
-      "joke": "Why did the scarecrow win an award? Because he was outstanding in his field!"
-    },
-    {
       "id": 1,
       "type": "twopart",
       "setup": "Why don't scientists trust atoms?",
       "delivery": "Because they make up everything!"
-    },
-    {
-      "id": 2,
-      "type": "single",
-      "joke": "Parallel lines have so much in common. It's a shame they'll never meet."
-    },
-    {
-      "id": 3,
-      "type": "twopart",
-      "setup": "Why did the bicycle fall over?",
-      "delivery": "Because it was two-tired!"
     },
     {
       "id": 4,
@@ -38,6 +22,11 @@
       "setup": "How do you spread love to the world?",
       "delivery": "...love  If you know you know.",
       "id": 6
+    },
+    {
+      "type": "single",
+      "joke": "What are bits? Tiny things left when you drop your computer down the stairs.",
+      "id": 7
     }
   ]
 }

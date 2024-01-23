@@ -198,7 +198,7 @@ document.addEventListener("DOMContentLoaded",() => {
         };
     }
         updateJokes(jokeObj)
-        // renderJokeOfTheDay(jokeObj)
+        renderJokeOfTheDay()
         // Clear form inputs
         jokeInput.value = "";
         setupInput.value = "";
@@ -218,23 +218,48 @@ document.addEventListener("DOMContentLoaded",() => {
         .then((animal) => console.log(animal))
     }
 
+    //fetch data from Local db.json and call renderJokeOfTheDay()
+    fetchFromJson()
+    function fetchFromJson(){
+        fetch("http://localhost:3000/jokes")
+        .then(res => res.json())
+        .then((jokes) => {
+            console.log(jokes)
+            renderJokeOfTheDay(jokes[Math.floor(Math.random()*10)])
+        })
+    }
+    
     //function to render joke of the day
-    function renderJokeOfTheDay(jokes){
+    function renderJokeOfTheDay(jokeObj){
         const jokeOfTheDay = document.querySelector(".joke-of-the-day")
         const par = document.createElement("p")
-        if (jokes.type === "single") {
-            par.textContent = jokes.joke
-        }else if (jokes.type === "twopart") {
-            par.textContent = `${jokes.setup}\n${jokes.delivery}`
+        if (jokeObj.type === "single") {
+            par.textContent = jokeObj.joke
+        }else if (jokeObj.type === "twopart") {
+            par.textContent = `${jokeObj.setup}\n${jokeObj.delivery}`
         }
         jokeOfTheDay.appendChild(par)
+
+        //delete the joke of the day from the JSON file
+        const deleteButton = document.querySelector("#delete-joke")
+        deleteButton.addEventListener("click", () => {
+            par.remove()
+            console.log(jokeObj.id)
+            deleteJoke(jokeObj.id)
+            fetchFromJson()
+        })
     }
 
-    fetch("http://localhost:3000/jokes")
-    .then(res => res.json())
-    .then((jokes) => {
-        console.log(jokes)
-        renderJokeOfTheDay(jokes[Math.floor(Math.random()*10)])
-    })
+    //deleteJoke() function
+    function deleteJoke(id){
+        fetch(`http://localhost:3000/jokes/${id}`,{
+            method : "DELETE",
+            headers : {
+                "Content-Type" : "application/json"
+            }
+        })
+        .then(res => res.json())
+        .then(joke => console.log(joke))
+    }
 
 })
