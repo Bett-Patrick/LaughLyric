@@ -1,31 +1,43 @@
 {
-    "jokes": [
-      {
-        "id":0,
-        "type": "single",
-        "joke": "Why did the scarecrow win an award? Because he was outstanding in his field!"
-      },
-      {
-        "id":1,
-        "type": "twopart",
-        "setup": "Why don't scientists trust atoms?",
-        "delivery": "Because they make up everything!"
-      },
-      {
-        "id":2,
-        "type": "single",
-        "joke": "Parallel lines have so much in common. It's a shame they'll never meet."
-      },
-      {
-        "id":3,
-        "type": "twopart",
-        "setup": "Why did the bicycle fall over?",
-        "delivery": "Because it was two-tired!"
-      },
-      {
-        "id":4,
-        "type": "single",
-        "joke": "I told my wife she should embrace her mistakes. She gave me a hug."
-      }
-    ]
-  }
+  "jokes": [
+    {
+      "id": 0,
+      "type": "single",
+      "joke": "Why did the scarecrow win an award? Because he was outstanding in his field!"
+    },
+    {
+      "id": 1,
+      "type": "twopart",
+      "setup": "Why don't scientists trust atoms?",
+      "delivery": "Because they make up everything!"
+    },
+    {
+      "id": 2,
+      "type": "single",
+      "joke": "Parallel lines have so much in common. It's a shame they'll never meet."
+    },
+    {
+      "id": 3,
+      "type": "twopart",
+      "setup": "Why did the bicycle fall over?",
+      "delivery": "Because it was two-tired!"
+    },
+    {
+      "id": 4,
+      "type": "single",
+      "joke": "I told my wife she should embrace her mistakes. She gave me a hug."
+    },
+    {
+      "type": "twopart",
+      "setup": "Why should you never play poker at the zoo? ",
+      "delivery": "Too many cheetahs",
+      "id": 5
+    },
+    {
+      "type": "twopart",
+      "setup": "How do you spread love to the world?",
+      "delivery": "...love  If you know you know.",
+      "id": 6
+    }
+  ]
+}

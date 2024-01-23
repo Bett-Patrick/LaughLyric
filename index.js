@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded",() => {
             })
         })
     }
-    //display the jokes based on category
+    //Function to display the jokes based on category
     function renderJokes(joke){
         // console.log(joke.setup)
         let interactionSection = document.createElement("div")
@@ -64,13 +64,10 @@ document.addEventListener("DOMContentLoaded",() => {
                 <span class = "share-count">0</span>
             </div>
         `
-        interactionSection.addEventListener("click", (e) => {
-            console.log(e)
-            addInteractions(e)
-        })
+        interactionSection.addEventListener("click", (e) => addInteractions(e))
+
         let jokeDiv = document.createElement("div")
         jokeDiv.id = "joke-div"
-
         if (joke.type === 'single') {
             // console.log(joke.joke)
             jokeDiv.textContent = joke.joke
@@ -85,6 +82,7 @@ document.addEventListener("DOMContentLoaded",() => {
         document.querySelector(".jokes-container").appendChild(jokeDiv)
     }
 
+    //function to enable user interactions
     function addInteractions(e) {
         const clickedElement = e.target;
         
@@ -117,9 +115,8 @@ document.addEventListener("DOMContentLoaded",() => {
         }
     }
     
-    
-    //Add, delete, edit jokes Section:
 
+    //Add, delete, edit jokes Section:
     /** Add joke form */
     const formDiv = document.createElement("div")
     formDiv.className = "form-div"
@@ -147,17 +144,26 @@ document.addEventListener("DOMContentLoaded",() => {
         document.querySelector(".jokes-container").innerHTML = ""
         document.querySelector(".jokes-container").appendChild(formDiv)
     
-
         // call the function that disables/enables inputs based on selected type
         const selectType = document.querySelector("#type");
         selectType.addEventListener("change", (e) => {
             const selectedType = e.target.value;
             disableInputs(selectedType)
-        });          
+        });   
+        // call the submitJoke() function
+        document.querySelector("#form-add-joke").addEventListener("submit", (e) => {
+            e.preventDefault()
+            submitJoke()
+        })
+        //exit the POST form
+        document.querySelector("#exit-btn").addEventListener("click",()=>{
+            document.querySelector(".jokes-container").innerHTML = ""
+            fetchJokes()
+        })
     })
 
-     // Function thst disable/enable inputs based on the selected type
-     function disableInputs(selectedType){
+    // Function thst disable/enable inputs based on the selected type
+    function disableInputs(selectedType){
         const singleInput = document.querySelector("#joke");
         const twoPartInputs = document.querySelectorAll("#setup, #delivery");
         if (selectedType === "single") {
@@ -168,4 +174,67 @@ document.addEventListener("DOMContentLoaded",() => {
             twoPartInputs.forEach(input => input.disabled = false);
         }
     }
+
+    //function to submit joke
+    function submitJoke(){
+    // Retrieve values from form inputs
+    const type = document.querySelector("#type").value
+    const jokeInput = document.querySelector("#joke")
+    const setupInput = document.querySelector("#setup")
+    const deliveryInput = document.querySelector("#delivery")
+
+    // Create a joke object based on the selected type
+    let jokeObj = {};
+    if (type === "single") {
+        jokeObj = {
+            type: "single",
+            joke: jokeInput.value,
+        };
+    } else if (type === "twopart") {
+        jokeObj = {
+            type: "twopart",
+            setup: setupInput.value,
+            delivery: deliveryInput.value,
+        };
+    }
+        updateJokes(jokeObj)
+        // renderJokeOfTheDay(jokeObj)
+        // Clear form inputs
+        jokeInput.value = "";
+        setupInput.value = "";
+        deliveryInput.value = "";
+    }
+
+    //POST joke to JSON
+    function updateJokes(jokeObj){
+        fetch("http://localhost:3000/jokes",{
+            method : "POST",
+            headers: {
+                "Content-Type" : "application/json"
+            },
+            body : JSON.stringify(jokeObj)
+        })
+        .then(res => res.json())
+        .then((animal) => console.log(animal))
+    }
+
+    //function to render joke of the day
+    function renderJokeOfTheDay(jokes){
+        const jokeOfTheDay = document.querySelector(".joke-of-the-day")
+        const par = document.createElement("p")
+        if (jokes.type === "single") {
+            par.textContent = jokes.joke
+        }else if (jokes.type === "twopart") {
+            par.textContent = `${jokes.setup}\n${jokes.delivery}`
+        }
+        jokeOfTheDay.appendChild(par)
+    }
+
+    fetch("http://localhost:3000/jokes")
+    .then(res => res.json())
+    .then((jokes) => {
+        console.log(jokes)
+        renderJokeOfTheDay(jokes[Math.floor(Math.random()*10)])
+    })
+
 })
